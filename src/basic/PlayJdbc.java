@@ -1,4 +1,6 @@
 package basic;
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -8,10 +10,14 @@ import basic.model.Student;
 public class PlayJdbc {
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		StudentDaoHelper helper=context.getBean("studentDaoHelper",StudentDaoHelper.class);
-		helper.insertStudents();
+		//StudentDaoHelper helper=context.getBean("studentDaoHelper",StudentDaoHelper.class);
+		//helper.insertStudents();
 
-		//StudentDaoImpl studentDao = (StudentDaoImpl) context.getBean("studentDao");
+		StudentDaoImpl studentDao = (StudentDaoImpl) context.getBean("studentDao");
+		//System.out.println(studentDao.findStudentById(3));
+		
+		List<Student> students=studentDao.getAllStudents();
+		printStudents(students);
 		//studentDao.delRecordById(13);
 		//insertStudent(studentDao);
 		//studentDao.cleanUp();
@@ -22,6 +28,15 @@ public class PlayJdbc {
 	}
 
 	
+	private static void printStudents(List<Student> students) {
+		// TODO Auto-generated method stub
+		for(Student s: students) {
+			System.out.println(s);
+
+		}
+	}
+
+
 	private static void insertStudent(StudentDao studentDao) {
 		Student Student1 = new Student(1, "Gayathri", 5, 55);
 		Student Student2 = new Student(2,"Akhila",6,66);
@@ -30,7 +45,7 @@ public class PlayJdbc {
 		Student Student5 = new Student(5,"Divya",9,99);
 
 		//= new StudentDaoImpl();
-		studentDao.insert(Student2);
+		studentDao.insert(Student5);
 	}
 
 }

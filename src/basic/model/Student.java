@@ -15,6 +15,10 @@ public class Student {
 		this.sem = sem;
 		this.average = average;
 	}
+	
+	public Student() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}
@@ -38,6 +42,12 @@ public class Student {
 	}
 	public void setAverage(int average) {
 		this.average = average;
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return "\ntoStringcalled\t"+name+"\t"+sem+"\t"+average;
 	}
 	
 }
